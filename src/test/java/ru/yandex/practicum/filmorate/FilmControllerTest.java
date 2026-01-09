@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class FilmControllerTest {
+class FilmControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -25,7 +25,7 @@ public class FilmControllerTest {
     }
 
     @Test
-    public void addFilm_ShouldFailOnEmptyName() throws Exception {
+    void addFilm_ShouldFailOnEmptyName() throws Exception {
         mockMvc.perform(post("/films")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(createTestFilmJson("", "A valid description", "2000-01-01", 120)))
@@ -35,7 +35,7 @@ public class FilmControllerTest {
     }
 
     @Test
-    public void addFilm_ShouldFailOnInvalidReleaseDate() throws Exception {
+    void addFilm_ShouldFailOnInvalidReleaseDate() throws Exception {
         mockMvc.perform(post("/films")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(createTestFilmJson("Valid Name", "A valid description", "1800-01-01", 120)))
@@ -45,7 +45,7 @@ public class FilmControllerTest {
     }
 
     @Test
-    public void addFilm_ShouldFailOnNegativeDuration() throws Exception {
+    void addFilm_ShouldFailOnNegativeDuration() throws Exception {
         mockMvc.perform(post("/films")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(createTestFilmJson("Valid Name", "A valid description", "2000-01-01", -10)))

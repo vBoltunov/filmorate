@@ -14,7 +14,7 @@ import static org.hamcrest.Matchers.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class UserControllerTest {
+class UserControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -25,7 +25,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void addUser_ShouldFailOnEmptyRequest() throws Exception {
+    void addUser_ShouldFailOnEmptyRequest() throws Exception {
         mockMvc.perform(post("/users")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{}"))
@@ -33,7 +33,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void addUser_ShouldFailOnEmptyEmail() throws Exception {
+    void addUser_ShouldFailOnEmptyEmail() throws Exception {
         mockMvc.perform(post("/users")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(createTestUserJson("", "testUser", "Test User",
@@ -44,7 +44,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void addUser_ShouldFailOnInvalidEmail() throws Exception {
+    void addUser_ShouldFailOnInvalidEmail() throws Exception {
         mockMvc.perform(post("/users")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(createTestUserJson("invalidEmail", "testUser", "Test User",
@@ -55,7 +55,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void addUser_ShouldFailOnFutureBirthday() throws Exception {
+    void addUser_ShouldFailOnFutureBirthday() throws Exception {
         mockMvc.perform(post("/users")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(createTestUserJson("test@example.com", "testUser",
@@ -66,7 +66,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void getUsers_ShouldReturnListOfUsers() throws Exception {
+    void getUsers_ShouldReturnListOfUsers() throws Exception {
         mockMvc.perform(post("/users")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(createTestUserJson("test2@example.com", "testUser2", "Test User 2",
@@ -80,7 +80,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void updateUser_ShouldReturnUpdatedUser() throws Exception {
+    void updateUser_ShouldReturnUpdatedUser() throws Exception {
         mockMvc.perform(post("/users")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(createTestUserJson("test@example.com", "testUser", "Test User",

@@ -28,7 +28,7 @@ class FilmoRateApplicationTests {
     private final UserDbStorage userStorage;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         userStorage.addUser(new User(null, "test@example.com", "testuser",
                 "Test User", LocalDate.of(1990, 1, 1), Collections.emptySet()));
         userStorage.addUser(new User(null, "test2@example.com", "testuser2", "Test User 2",
@@ -36,7 +36,7 @@ class FilmoRateApplicationTests {
     }
 
     @Test
-    public void testAddUser() {
+    void testAddUser() {
         User newUser = new User(null, "test11@example.com", "testlogin", "Test User",
                 LocalDate.of(1990, 1, 1), new HashSet<>());
 
@@ -51,7 +51,7 @@ class FilmoRateApplicationTests {
     }
 
     @Test
-    public void testGetUsers() {
+    void testGetUsers() {
         Collection<User> users = userStorage.getUsers();
 
         assertThat(users).isNotEmpty();
@@ -59,7 +59,7 @@ class FilmoRateApplicationTests {
     }
 
     @Test
-    public void testUpdateUser_NotFound() {
+    void testUpdateUser_NotFound() {
         Long nonExistentUserId = 999L;
         User nonExistentUser = new User(nonExistentUserId, "nonexistent@example.com",
                 "nonexistentLogin", "Non Existent User", LocalDate.of(1995, 5, 5),
